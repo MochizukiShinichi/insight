@@ -1,0 +1,8 @@
+.ipynb_checkpoints/*
+*.csv
+input/
+output/
+*.ini
+.idea/*
+__pycache__/
+*.ipynb
