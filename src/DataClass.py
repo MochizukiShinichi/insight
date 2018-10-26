@@ -91,7 +91,7 @@ class Data:
                 writer.writerow(['TOP_STATES','NUMBER_CERTIFIED_APPLICATIONS','PERCENTAGE'])
 
                 state_sum = sum([cnt[1] for cnt in self.top_state[:min(10, state_cnt)]])
-                for entry in self.top_state[:min(10, job_cnt)]:
+                for entry in self.top_state[:min(10, state_cnt)]:
                     writer.writerow([entry[0], entry[1], "{:.1%}".format(entry[1]/state_sum)])
 
 
