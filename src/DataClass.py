@@ -51,21 +51,22 @@ class Data:
                 names = file.readline().upper().split(';')
                 job_name_index = [i for i, name in enumerate(names) if re.search('SOC_NAME',name) != None][0]
                 status_index = [i for i, name in enumerate(names) if re.search('STATUS',name) != None][0]
-                state_index = [i for i, name in enumerate(names) if re.search('EMPLOYER_STATE',name) != None][0]
+                state_index = [i for i, name in enumerate(names) if re.search('WORKSITE_STATE',name) != None][0]
             except:
                 raise NameError('One or more necessary columns cannot be found in the input file')
 
             top_job = {}
             top_state = {}
+          
             reader = csv.reader(file, delimiter=';')
             for row in reader:
                 if row[status_index] == 'CERTIFIED':
-                    top_job[row[job_name_index]] = 1 + top_job[row[job_name_index]] if row[job_name_index] in top_job else 1
-                    top_state[row[state_index]] = 1 + top_state[row[state_index]] if row[state_index] in top_state else 1
+                    top_job[row[job_name_index]] = 1 + top_job.get(row[job_name_index], 0) 
+                    top_state[row[state_index]] = 1 + top_state.get(row[state_index], 0)
 
             # sort job and state by number
-            self.top_job = [[job, top_job[job]] for job in sorted(top_job,key=top_job.get, reverse=True) if job != '']
-            self.top_state = [[state, top_state[state]] for state in sorted(top_state, key=top_state.get, reverse=True) if state != '']
+            self.top_job = [[job, top_job[job]] for job in sorted(top_job, key=lambda key: (-top_job.get(key), key)) if job != '']
+            self.top_state = [[state, top_state[state]] for state in sorted(top_state, key=lambda key: (-top_state.get(key), key)) if state != '']
         
     def generate_output(self):
         """method to output top results to txt files in output folder"""
