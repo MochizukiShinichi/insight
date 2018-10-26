@@ -1,8 +1,0 @@
-.ipynb_checkpoints/*
-*.ini
-.idea/*
-__pycache__/
-*.ipynb
-.vscode/
-insight_testsuite/temp/
-input/
