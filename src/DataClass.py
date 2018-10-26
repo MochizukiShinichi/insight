@@ -71,7 +71,7 @@ class Data:
         """method to output top results to txt files in output folder"""
         job_cnt = len(self.top_job)
         state_cnt = len(self.top_state)
-        print(job_cnt, state_cnt)
+
         if job_cnt == 0:
             print('zero job categories in the input')
         else:    
