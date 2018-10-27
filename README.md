@@ -23,10 +23,10 @@ Input file requirements:
 
 1. Put data file satisfying requirements in the ./input/ folder
 2. run ./run.sh file, modify parameter **--inputFile=/input/YOUR_CSV_FILE_NAME** if necessary
-'''
+```
 #!/bin/bash
 python3 ./src/run.py --InputFile='/input/h1b_input.csv' 
-'''
+```
 3. results are in ./output/ folder
 
 
